@@ -4,12 +4,14 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #1f72c5;
-  margin-top: 60px;
-  /* background-color: coral; */
+  /* margin-top: 60px; */
+  background-color: coral;
+  width: 10px;
+  height: 10000px;
 }
 
 .viewport {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
