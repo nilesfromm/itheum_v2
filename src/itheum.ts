@@ -144,9 +144,15 @@ export class Itheum {
 				this.logoPoints[i].y = p.y * this.scale;
 				this.u_x[i] = this.logoPoints[i].x;
 				this.u_y[i] = -this.logoPoints[i].y;
-				const range: ICoordinate = { x: 0.2, y: 1.3 };
-				this.u_r[i] = Math.random() * (range.y - range.x) + range.x;
-
+				const range: ICoordinate = { x: 0.4, y: 1.3 };
+				let r:number = Math.random() * (range.y - range.x) + range.x;
+				if(this.scale < 0.75){
+					this.u_r[i] = r * (0.25 + this.scale);
+				}
+				else{
+					this.u_r[i] = r;
+				}
+				
 				let plusOrMinus: number = Math.random() < 0.5 ? -1 : 1;
 				this.points.push(
 					new OrbitPoint(
@@ -160,7 +166,7 @@ export class Itheum {
 				);
 			});
 
-			console.log(this.points);
+			// console.log(this.points);
 		};
 
 		p.draw = () => {
@@ -197,7 +203,7 @@ export class Itheum {
 		};
 
 		p.windowResized = () => {
-            // this.scale = p.windowWidth / 2000;
+            this.scale = p.windowWidth / 2000;
 			if (this.debug) {
 				console.log(`resized ${window.innerWidth}, ${window.innerHeight}`);
 			}
